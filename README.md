@@ -100,19 +100,20 @@ These values need to be updated in [`sample_config.h`](./source/netxduo/addons/a
    
 3. Update the variables ``COMPILER``, ``ARM_PRODUCT_DEF``, ``COMPILER_BIN_PATH`` in setup_user_env.sh according to your host setup
 
-4. Update the ``SAMPLE_IPV4_ADDRESS`` in [``main.c``](.//source/netxduo/addons/azure_iot/samples/main.c) according to your network setup
+4. Set up IP configuration in [``main.c``](.//source/netxduo/addons/azure_iot/samples/main.c), set configurations `SAMPLE_IPV4_ADDRESS` and `SAMPLE_GATEWAY_ADDRESS`. Please note that DHCP does not work in this application.
    
-5. Enable the features in the application by commenting ``DISABLE_TELEMETRY_SAMPLE``, ``DISABLE_C2D_SAMPLE``, ``DISABLE_DIRECT_METHOD_SAMPLE``, ``DISABLE_DEVICE_TWIN_SAMPLE``
+5. Set up Azure device or DPS credentials in `sample_config.h`
    
-6. Update the ``HOST_NAME``, ``DEVICE_ID`` and ``DEVICE_SYMMETRIC_KEY`` values derived in the above section.
-   #### Register a new device in the IoT hub
+6. Enable the features in the application by commenting ``DISABLE_TELEMETRY_SAMPLE``, ``DISABLE_C2D_SAMPLE``, ``DISABLE_DIRECT_METHOD_SAMPLE``, ``DISABLE_DEVICE_TWIN_SAMPLE``
    
-7. Run the CMake command to build the image depending on the configuration required
+7. Update the ``HOST_NAME``, ``DEVICE_ID`` and ``DEVICE_SYMMETRIC_KEY`` values derived in the above section.
+    
+8. Run the CMake command to build the image depending on the configuration required
 
    ```bash
    $./run.sh DEVICE=RTSS_HE/RTSS_HP PACK=ENSEMBLE OS=THREADX BOOT=MRAM/TCM TEST_APP=main CLEAN=YES/NO DEVELOPER=YES
    ```
-8. Image binaries should be in the directory ``${PWD}/build_rtss/ARMCLANG/exec/ensemble/threadx/HE/MRAM``` to validate.
+10. Image binaries should be in the directory ``${PWD}/build_rtss/ARMCLANG/exec/ensemble/threadx/HE/MRAM``` to validate.
 
 
 
